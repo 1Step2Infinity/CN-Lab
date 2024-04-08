@@ -1,9 +1,51 @@
+Router 1
+
 en 
-conf t 
-int gi0/0/0 
-ip address 10.10.10.1 255.255.255.248 
-no shutdown 
-exit 
+config t 
+#interface fa 0/0
+ip add 111.222.3.1 255.255.255.0
+no shut
+int serial 0/0/0
+ip ad 10.0.0.2 255.0.0.0
+no shut
+ex
+
+
+Router 2
+
+en 
+config t 
+#interface fa 0/0
+ip add 111.222.4.1 255.255.255.0
+no shut
+int serial 0/0/0
+ip ad 10.0.0.3 255.0.0.0
+no shut
+int s 0/0/1
+ip add 11.0.0.2 255.0.0.0
+no shut
+ex
+
+
+Router 3
+
+
+en 
+config t 
+#interface fa 0/0
+ip add 111.222.5.1 255.255.255.0
+no shut
+int serial 0/0/0
+ip ad 11.0.0.3 255.0.0.0
+no shut
+ex
+
+
+
+
+
+//
+
 int gi0/0/1 
 ip address 192.168.1.1 255.255.255.0 
 no shutdown 
@@ -11,7 +53,7 @@ exit
 ip route 192.168.2.0 255.255.255.0 10.10.10.2
 and pasting this in router1
 en 
-conf t 
+config t 
 int gi0/0/0 
 ip address 10.10.10.2 255.255.255.248 
 no shutdown 
@@ -20,4 +62,4 @@ int gi0/0/1
 ip address 192.168.2.1 255.255.255.0 
 no shutdown 
 exit 
-ip route 192.168.1.0 255.255.255.0 10.10.10.1
+ip route 192.168.1.0 255.255.255.0 10.10.10.1  //
